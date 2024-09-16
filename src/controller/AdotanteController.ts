@@ -9,7 +9,7 @@ import {
 } from "../tipos/tiposAdotante";
 
 export default class AdotanteController {
-  constructor(private repository: AdotanteRepository) {}
+  constructor(private repository: AdotanteRepository) { }
   async criaAdotante(
     req: Request<TipoRequestParamsAdotante, {}, TipoRequestBodyAdotante>,
     res: Response<TipoResponseBodyAdotante>
