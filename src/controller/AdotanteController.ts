@@ -27,7 +27,7 @@ export default class AdotanteController {
     await this.repository.criaAdotante(novoAdotante);
     return res
       .status(201)
-      .json({ data: { id: novoAdotante.id, nome, celular } });
+      .json({ data: { id: novoAdotante.id, nome, celular, endereco } });
   }
   async atualizaAdotante(
     req: Request<TipoRequestParamsAdotante, {}, TipoRequestBodyAdotante>,
@@ -56,6 +56,7 @@ export default class AdotanteController {
         id: adotante.id,
         nome: adotante.nome,
         celular: adotante.celular,
+        endereco: adotante.endereco !== null ? adotante.endereco : undefined,
       };
     });
     return res.json({ data });
@@ -78,14 +79,14 @@ export default class AdotanteController {
   }
 
   async atualizaEnderecoAdotante(
-    req: Request<TipoRequestParamsAdotante, {}, TipoRequestBodyAdotante>,
+    req: Request<TipoRequestParamsAdotante, {}, EnderecoEntity>,
     res: Response<TipoResponseBodyAdotante>
   ) {
     const { id } = req.params;
 
     const { success, message } = await this.repository.atualizaEnderecoAdotante(
       Number(id),
-      req.body.endereco as EnderecoEntity
+      req.body
     );
 
     if (!success) {
