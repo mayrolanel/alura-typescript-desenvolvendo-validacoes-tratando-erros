@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import * as yup from "yup";
-import { TipoRequestBodyAdotante } from "../../tipos/tiposAdotante";
+import { pt } from "yup-locale-pt"
 import EnderecoEntity from "../../entities/Endereco";
+
+yup.setLocale(pt)
 
 const schemaBodyEndereco: yup.ObjectSchema<Omit<EnderecoEntity, "id">> = yup.object({
     cidade: yup.string().defined().required(),
