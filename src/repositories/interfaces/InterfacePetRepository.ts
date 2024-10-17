@@ -7,13 +7,13 @@ export default interface InterfacePetRepository {
   atualizaPet(
     id: number,
     pet: PetEntity
-  ): Promise<{ success: boolean; message?: string }> | void;
+  ): void;
 
-  deletaPet(id: number): Promise<{ success: boolean; message?: string }> | void;
+  deletaPet(id: number): void;
   adotaPet(
     idPet: number,
     idAdotante: number
-  ): Promise<{ success: boolean; message?: string }> | void;
+  ): void;
 
   buscaPetPorCampoGenerico<Tipo extends keyof PetEntity>(
     campo: Tipo,

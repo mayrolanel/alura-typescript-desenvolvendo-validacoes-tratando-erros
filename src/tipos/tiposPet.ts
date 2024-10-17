@@ -12,7 +12,6 @@ type TipoResponseBodyPet = {
   data?:
     | Pick<PetEntity, "id" | "nome" | "porte" | "especie">
     | Pick<PetEntity, "id" | "nome" | "porte" | "especie">[];
-  error?: unknown;
 };
 
 export { TipoRequestBodyPet, TipoResponseBodyPet, TipoRequestParamsPet };
